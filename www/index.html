@@ -22,7 +22,7 @@
         <!-- UIkit JS -->
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
-
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>Cetro App</title>
         <style>
             
@@ -385,19 +385,16 @@ alert('att');
         // });
 
         
-   
-        $.ajax({
-                    url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
-                    type : 'post',
-                    crossDomain: true,
-                    data : {
+   axios({
+  method: 'post', // verbo http
+  url: "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
+  data : {
                         "S":"SelectProduto"
-                    },beforeSend : function(){
-                  alert('enviando requisicao...');
-                },
-            }).done(function(msg){
-                   var esportes = "";
-                    var prod = JSON.parse(msg);
+                    }
+})
+.then(response => {
+     var esportes = "";
+                    var prod = JSON.parse(response);
                     var complet = '';
                         for (var i = 0; i<prod.length; i++) 
                          { 
@@ -408,10 +405,38 @@ alert('att');
                         source: complet
                     });
                     alert(msg);
+})
+.catch(error => {
+    alert('erro de conexao');
+})
               
-}).fail(function(jqXHR, textStatus, msg){  
-   alert(msg);
-            });  
+              
+//         $.ajax({
+//                     url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
+//                     type : 'post',
+//                     crossDomain: true,
+//                     data : {
+//                         "S":"SelectProduto"
+//                     },beforeSend : function(){
+//                   alert('enviando requisicao...');
+//                 },
+//             }).done(function(msg){
+//                    var esportes = "";
+//                     var prod = JSON.parse(msg);
+//                     var complet = '';
+//                         for (var i = 0; i<prod.length; i++) 
+//                          { 
+//                             complet += prod[i].nome+',';   
+//                          }  
+//                     complet = complet.split(','); 
+//                     $("#nome_prod").autocomplete({
+//                         source: complet
+//                     });
+//                     alert(msg);
+              
+// }).fail(function(jqXHR, textStatus, msg){  
+//    alert(msg);
+//             });  
      
      
               
