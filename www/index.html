@@ -22,7 +22,6 @@
         <!-- UIkit JS -->
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>Cetro App</title>
         <style>
             
@@ -361,84 +360,9 @@ alert('att');
         }
           
        
-        // $(function() {
-        //     // Swal.fire({ showConfirmButton: false,  html: '<h1>Buscando...</h1><br><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'});
-        //     $('#produto').css({'display':'none'});
-        //     $.ajax({
-        //         url : "http://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
-        //         type : 'post', data : {"S":"SelectProduto" }
-        //     }).done(function(msg){
-        //         var esportes = "";
-        //         var prod = JSON.parse(msg);
-        //         var complet = '';
-        //         for (var i = 0; i<prod.length; i++) { 
-        //             complet += prod[i].nome+',';   
-        //         }  
-        //         complet = complet.split(',');   
-        //         alert(complet);
-        //         $("#nome_prod").autocomplete({
-        //             source: complet
-        //         });
-        //     }).fail(function(jqXHR, textStatus, msg){  
-        //         // erro_net();
-        //     });   
-        // });
+      
+              
 
-        
-   axios({
-  method: 'post', // verbo http
-  url: "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
-  data : {
-                        "S":"SelectProduto"
-                    }
-})
-.then(response => {
-       alert(response+"axios");
-     var esportes = "";
-                    var prod = JSON.parse(response);
-                    var complet = '';
-                        for (var i = 0; i<prod.length; i++) 
-                         { 
-                            complet += prod[i].nome+',';   
-                         }  
-                    complet = complet.split(','); 
-                    $("#nome_prod").autocomplete({
-                        source: complet
-                    });
-                    alert(msg);
-})
-.catch(error => {
-    alert('erro de conexao');
-})
-              
-              
-//         $.ajax({
-//                     url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
-//                     type : 'post',
-//                     crossDomain: true,
-//                     data : {
-//                         "S":"SelectProduto"
-//                     },beforeSend : function(){
-//                   alert('enviando requisicao...');
-//                 },
-//             }).done(function(msg){
-//                    var esportes = "";
-//                     var prod = JSON.parse(msg);
-//                     var complet = '';
-//                         for (var i = 0; i<prod.length; i++) 
-//                          { 
-//                             complet += prod[i].nome+',';   
-//                          }  
-//                     complet = complet.split(','); 
-//                     $("#nome_prod").autocomplete({
-//                         source: complet
-//                     });
-//                     alert(msg);
-              
-// }).fail(function(jqXHR, textStatus, msg){  
-//    alert(msg);
-//             });  
-     
      
               
 
@@ -448,6 +372,9 @@ alert('att');
                     url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
                     type : 'post',
                     crossDomain: true,
+                    xhrFields: {
+                            withCredentials: true
+                    },
                     data : {
                         "S":"SelectProduto"
                     },beforeSend : function(){
