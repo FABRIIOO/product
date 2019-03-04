@@ -19,11 +19,11 @@
         $(document).ready(function() {
             
               $.ajax({
-                    url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
+                    url : "http://plistone.requestwf.com.br/codigo_php/busca_instrumento.php",
                     type : 'post',
                     crossDomain: true,
                     data : {
-                        "S":"SelectProduto"
+//                         "S":"SelectProduto"
                     },beforeSend : function(){
                   alert('enviando requisicao...');
                 },
