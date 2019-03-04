@@ -332,7 +332,9 @@
                     </div>  
                 </div>
           <script>
-alert('att');
+
+
+
             $('#nome_prod').on('keydown', function (event) {
                 if (event.keyCode == 13) {
                     busca_prod();
@@ -368,10 +370,10 @@ alert('att');
 
         $(document).ready(function() {
           $('#produto').css({'display':'none'});
+
               $.ajax({
                     url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
                     type : 'post',
-                    crossDomain: true,
                     xhrFields: {
                             withCredentials: true
                     },
@@ -392,7 +394,6 @@ alert('att');
                     $("#nome_prod").autocomplete({
                         source: complet
                     });
-                    alert(msg);
                 }) .fail(function(jqXHR, textStatus, msg){
               alert(msg);
             });   
