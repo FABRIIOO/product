@@ -16,14 +16,17 @@
 
      
 
-        $(document).ready(function() {
-            
+       $(document).ready(function() {
+
               $.ajax({
-                    url : "http://plistone.requestwf.com.br/codigo_php/busca_instrumento.php",
+                    url : "http://plistone.requestwf.com.br/codigo_php/busca.php",
                     type : 'post',
                     crossDomain: true,
+                    xhrFields: {
+                     withCredentials: true
+                    },
                     data : {
-//                         "S":"SelectProduto"
+                        "busca":'%'
                     },beforeSend : function(){
                   alert('enviando requisicao...');
                 },
