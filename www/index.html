@@ -384,7 +384,37 @@
         //     });   
         // });
 
+        
+   
+        $.ajax({
+                    url : "https://files.cetromaquinas.com.br/arquivos/php_app_vendas/request_app.php",
+                    type : 'post',
+                    crossDomain: true,
+                    data : {
+                        "S":"SelectProduto"
+                    },beforeSend : function(){
+                  alert('enviando requisicao...');
+                },
+            }).done(function(msg){
+                   var esportes = "";
+                    var prod = JSON.parse(msg);
+                    var complet = '';
+                        for (var i = 0; i<prod.length; i++) 
+                         { 
+                            complet += prod[i].nome+',';   
+                         }  
+                    complet = complet.split(','); 
+                    $("#nome_prod").autocomplete({
+                        source: complet
+                    });
+                    alert(msg);
+              
+}).fail(function(jqXHR, textStatus, msg){  
+   alert(msg);
+            });  
      
+     
+              
 
         $(document).ready(function() {
           $('#produto').css({'display':'none'});
